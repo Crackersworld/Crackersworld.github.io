@@ -21,3 +21,5 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-lock.yaml
 package-lock.json
+src/react-app-env.d.ts
+tsconfig.json
