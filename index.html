@@ -6,17 +6,44 @@
     <title>Crackers World</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-image: url('https://images.unsplash.com/photo-1662720868850-e60cefb03201?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=joshi-milestoner-EZ7S0jJt588-unsplash.jpg');
+            background-size: cover;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+
+        header, main, footer {
+            backdrop-filter: blur(15px); /* Glassmorphism effect */
+            background-color: rgba(255, 255, 255, 0.4); /* Translucent background */
+            border-radius: 20px; /* Rounded corners */
+            border: 1px solid rgba(255, 255, 255, 0.8); /* Light border for glass effect */
+            padding: 30px;
+            margin: 20px auto; /* Center the container */
+            max-width: 800px; /* Set a max width for better layout */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), inset 0 -4px 10px rgba(255, 255, 255, 0.5); /* Neumorphic shadow */
         }
 
         header {
-            background: #ffcc00;
-            color: #333;
-            padding: 20px;
             text-align: center;
+            margin-bottom: 20px; /* Space below header */
+        }
+
+        h1 {
+            color: #ff5722; /* Vibrant color for the main title */
+            font-size: 2.5em; /* Larger font size for the title */
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8); /* Enhanced shadow */
+        }
+
+        h2 {
+            color: #333; /* Darker color for better visibility */
+            margin-top: 20px; /* Space above subheadings */
+        }
+
+        p {
+            color: #555; /* Slightly lighter color for paragraphs */
+            line-height: 1.6; /* Improve readability with line height */
         }
 
         nav ul {
@@ -31,23 +58,45 @@
 
         nav ul li a {
             text-decoration: none;
-            color: #333;
+            color: #ff5722; /* Color for links matching the title */
+            transition: color 0.3s ease; /* Smooth transition for hover effect */
         }
 
-        main {
-            padding: 20px;
+        nav ul li a:hover {
+            color: #e64a19; /* Darker shade on hover for links */
         }
 
         section {
             margin-bottom: 20px;
+            border-top: 2px solid #ff5722; /* Decorative top border for sections */
+            padding-top: 10px; /* Space below the top border */
         }
 
         footer {
             text-align: center;
-            padding: 10px;
-            background: #333;
-            color: white;
+            color: white; /* Keep footer text white for contrast */
         }
+
+        footer p {
+            margin-top: 10px; /* Space above footer text */
+        }
+
+        /* Custom styles for phone number list with bullet points */
+        .phone-list {
+            list-style-type: disc; /* Use default bullet points */
+            padding-left: 20px; /* Add padding to align bullets properly */
+        }
+
+        .star {
+          position: absolute;
+          pointer-events: none; 
+          width: 10px; 
+          height: 10px; 
+          color: yellow; 
+          font-size: 20px; 
+          opacity: 0; 
+          transition: opacity 0.2s ease-out; 
+      }
     </style>
 </head>
 <body>
@@ -64,14 +113,14 @@
     <main>
         <section id="about">
             <h2>Celebrate Diwali with a Bang!</h2>
-            <p>Light up your celebrations with a bang—enjoy up to 30-50% off on fireworks crackers!</p>
+            <p>Light up your celebrations with a bang—enjoy up to <strong>30-50% off</strong> on fireworks crackers!</p>
             <p>Don’t miss the chance to make your festivities explode with joy!</p>
         </section>
 
         <section id="contact">
             <h2>Contact Us</h2>
             <p>Phone Numbers:</p>
-            <ul>
+            <ul class="phone-list"> <!-- Use bullet points for phone numbers -->
                 <li>7975113388</li>
                 <li>7996767087</li>
                 <li>6005082083</li>
@@ -84,8 +133,29 @@
     </footer>
 
     <script>
-        // You can add interactive features if needed
-        console.log("Welcome to Crackers World!");
-    </script>
+      window.addEventListener('mousemove', function(e) {
+          const star = document.createElement('div');
+          star.className = 'star';
+          
+          // Set position of the star
+          star.style.left = e.pageX + 'px';
+          star.style.top = e.pageY + 'px';
+          
+          // Add the star character (★)
+          star.textContent = '★';
+          
+          // Append to body
+          document.body.appendChild(star);
+          
+          // Trigger animation
+         setTimeout(() => {
+              star.style.opacity = '1'; // Fade in
+              setTimeout(() => {
+                  star.style.opacity = '0'; // Fade out
+                  setTimeout(() => star.remove(), 200); // Remove after fade out
+              }, 200); // Keep visible for a short time
+         }, 10);
+     });
+   </script>
 </body>
 </html>
